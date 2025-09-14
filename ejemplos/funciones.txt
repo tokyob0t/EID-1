@@ -1,0 +1,69 @@
+x**2              (Polinómica)
+  Dominio: (-∞, ∞)
+  Recorrido: [0, ∞)
+  Intersecciones:
+    Eje Y: (0, 0)
+    Eje X: (0, 0)
+
+x**3 - 2*x        (Polinómica)
+  Dominio: (-∞, ∞)
+  Recorrido: (-∞, ∞)
+  Intersecciones:
+    Eje Y: (0, 0)
+    Eje X: (-√2, 0), (0, 0), (√2, 0)
+
+1/(x-1)           (Racional)
+  Dominio: (-∞, 1) ∪ (1, ∞)
+  Recorrido: (-∞, 0) ∪ (0, ∞)
+  Intersecciones:
+    Eje Y: (0, -1)
+    Eje X: Ninguna
+
+(x**2 - 1)/(x+2)  (Racional)
+  Dominio: (-∞, -2) ∪ (-2, ∞)
+  Recorrido: (-∞, ∞)
+  Intersecciones:
+    Eje Y: (0, -1/2)
+    Eje X: (-1, 0), (1, 0)
+
+sqrt(x)           (Radical)
+  Dominio: [0, ∞)
+  Recorrido: [0, ∞)
+  Intersecciones:
+    Eje Y: (0, 0)
+    Eje X: (0, 0)
+
+sqrt(x**2 - 4)    (Radical)
+  Dominio: (-∞, -2] ∪ [2, ∞)
+  Recorrido: [0, ∞)
+  Intersecciones:
+    Eje Y: Ninguna
+    Eje X: (-2, 0), (2, 0)
+
+sin(x)            (Trigonométrica)
+  Dominio: (-∞, ∞)
+  Recorrido: [-1, 1]
+  Intersecciones:
+    Eje Y: (0, 0)
+    Eje X: (kπ, 0), k ∈ Z
+
+tan(x)            (Trigonométrica)
+  Dominio: R \ {π/2 + kπ, k ∈ Z}
+  Recorrido: (-∞, ∞)
+  Intersecciones:
+    Eje Y: (0, 0)
+    Eje X: (kπ, 0), k ∈ Z
+
+2**x              (Exponencial)
+  Dominio: (-∞, ∞)
+  Recorrido: (0, ∞)
+  Intersecciones:
+    Eje Y: (0, 1)
+    Eje X: Ninguna
+
+log(x)            (Logarítmica)
+  Dominio: (0, ∞)
+  Recorrido: (-∞, ∞)
+  Intersecciones:
+    Eje Y: Ninguna
+    Eje X: (1, 0)
