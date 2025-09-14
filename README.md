@@ -130,27 +130,3 @@ Los errores se muestran en diálogos y el reporte queda limpio.
   El reporte incluye las **condiciones por tramos**.
 
 ---
-
-## 🛠️ Troubleshooting
-
-- **ImportError: attempted relative import with no known parent package**  
-  → Ejecuta desde la raíz con `python main.py` **o** `python -m analizador.main`.
-- **No se grafica**  
-  → Revisa que la **Ventana x** tenga `min < max` y que la función tenga dominio real en ese rango.
-- **Recorrido “Aproximado”**  
-  → Es normal si SymPy no logra el rango simbólico; el reporte explica el muestreo usado.
-
----
-
-## 🤝 Contribución
-
-- Rama por feature: `feat/<nombre>`
-- Commits pequeños y claros.
-- PR con explicación/capturas.
-- Mantener PEP8 y evitar dependencias nuevas (sin NumPy).
-
----
-
-## 📄 Licencia
-
-MIT (o la que definas).
