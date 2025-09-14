@@ -1,17 +1,17 @@
-# Analizador de Funciones (Tkinter + SymPy + Matplotlib)
+# Analizador de Funciones
 
-Aplicación de escritorio que **analiza funciones** ingresadas por el usuario y muestra:
+Aplicación en Python que permite analizar y graficar funciones matemáticas ingresadas por el usuario.  
 
-- **Dominio** (con **restricciones** detectadas automáticamente).
-- **Recorrido** (intento **simbólico** y *fallback* **numérico sin NumPy**, con método explicado).
-- **Intersecciones con ejes** (X e Y) y **evaluación de un punto** con paso a paso.
-- **Gráfica** limpia (títulos, ejes, leyenda) y **marcado** de intersecciones y del punto evaluado.
+## Objetivo
 
-Cumple con lo exigido en la **Parte B: Proyecto en Python (Defensa presencial)** del EID, incluyendo **interfaz**, **manejo de errores**, **estructura modular** y **uso de SymPy** (sin NumPy).
+El programa entrega:
+- **Dominio** de la función, indicando restricciones detectadas.  
+- **Recorrido**, de forma exacta si es posible o aproximada en caso contrario.  
+- **Intersecciones con los ejes** X e Y.  
+- **Evaluación de un punto** mostrando el desarrollo.  
+- **Gráfica** de la función respetando el dominio y marcando puntos relevantes.  
 
----
-
-## 📁 Estructura del proyecto (esta repo)
+## Estructura
 
 ```
 analizador/
@@ -28,129 +28,34 @@ main.py
 requirements.txt
 ```
 
-> Ejecuta SIEMPRE desde la raíz del proyecto (la carpeta donde ves `main.py`).
+## Requisitos
 
----
+- Python 3.10+  
+- Tkinter  
+- SymPy  
+- Matplotlib  
 
-## 🧩 Stack
-
-- **Python** 3.10+ (probado con 3.12/3.13)
-- **Tkinter** (GUI)
-- **SymPy** (parseo, dominio, recorrido, solveset)
-- **Matplotlib** (gráficas)
-- **Sin NumPy** (requisito)
-
----
-
-## 📦 Instalación
-
-1) (Opcional) Crea un entorno virtual
-```bash
-python -m venv .venv
-# Windows
-.venv\Scripts\activate
-# macOS/Linux
-source .venv/bin/activate
-```
-
-2) Instala dependencias
+Instalación rápida:  
 ```bash
 pip install -r requirements.txt
 ```
-> Si no tienes `requirements.txt`, puedes usar: `pip install sympy matplotlib`.
 
----
+## Ejecución
 
-## ▶️ Ejecución
-
-### Opción A (recomendada por simplicidad)
+Desde la raíz del proyecto:  
 ```bash
 python main.py
 ```
 
-### Opción B (como paquete)
+También puede ejecutarse como paquete:  
 ```bash
 python -m analizador.main
 ```
 
-> **No ejecutes `ui.py` directo** (provoca errores de imports relativos). Usa `main.py` o el modo `-m`.
-
----
-
-## 🧭 Uso de la aplicación
-
-1. En **f(x) =** escribe la función (ej: `sin(x)/x`, `(x**2 - 1)/(x + 2)`, `log(x-1)/sqrt(x+2)`).  
-2. (Opcional) En **x =** ingresa un valor para evaluar.  
-3. Pulsa **Analizar** para ver:
-   - **Dominio** formateado (∪, ±∞) + **restricciones**: denominadores≠0, `log`>0, `sqrt`≥0, tramos `Piecewise`.
-   - **Recorrido**: exacto si SymPy puede; si no, **aproximado** con muestreo propio (sin NumPy) e indicación del método.
-   - **Intersecciones** con X e Y y breve **interpretación**.
-   - **Evaluación en punto** con sustitución y valor numérico.
-4. Ajusta **Ventana x** y pulsa **Graficar** para ver la curva, intersecciones y el punto evaluado.
-
-> En `ejemplos/funciones.txt` hay expresiones listas para copiar/pegar.
-
----
-
-## 🧠 ¿Qué hace por dentro? (resumen)
-
-- **Parseo seguro**: solo variable `x` y nombres permitidos (SymPy).  
-- **Dominio**: `function_domain` (o `continuous_domain` fallback) + desglose de **restricciones** detectadas.  
-- **Recorrido**: `function_range`; si falla, **muestreo** sobre el dominio (sin NumPy) indicando cuántas muestras se usaron.  
-- **Intersecciones**: con **Y** evaluando `x=0` si pertenece al dominio; con **X** usando `solveset` y/o **bisección** asistida por muestreo.  
-- **Gráfica**: se trazan **segmentos continuos** dentro del dominio (corte en discontinuidades).
-
----
-
-## 🧯 Manejo de errores
-
-- Expresiones vacías/ilegales → mensaje claro.
-- Variables distintas de `x` → rechazo inmediato.
-- Dominio/recorrido imposibles de determinar → explicación del motivo.
-- Evaluación en punto inválida → detalle del error.
-
-Los errores se muestran en diálogos y el reporte queda limpio.
-
----
-
-## 🧪 Ejemplos recomendados
+## Ejemplos de uso
 
 - `sin(x)/x`  
-  Dominio: `(-∞, 0) ∪ (0, ∞)`  
-  Recorrido aprox (método numérico indicado en reporte).
-
 - `(x**2 - 1)/(x + 2)`  
-  Dominio: `(-∞, -2) ∪ (-2, ∞)`  
-  Recorrido exacto: `(-∞, -4 - 2*sqrt(3)] ∪ [-4 + 2*sqrt(3), ∞)`
-
 - `log(x-1)/sqrt(x+2)`  
-  Dominio: `(1, ∞)`
 
-- `Piecewise((x**2, x<0), (sqrt(x), True))`  
-  El reporte incluye las **condiciones por tramos**.
-
----
-
-## 🛠️ Troubleshooting
-
-- **ImportError: attempted relative import with no known parent package**  
-  → Ejecuta desde la raíz con `python main.py` **o** `python -m analizador.main`.
-- **No se grafica**  
-  → Revisa que la **Ventana x** tenga `min < max` y que la función tenga dominio real en ese rango.
-- **Recorrido “Aproximado”**  
-  → Es normal si SymPy no logra el rango simbólico; el reporte explica el muestreo usado.
-
----
-
-## 🤝 Contribución
-
-- Rama por feature: `feat/<nombre>`
-- Commits pequeños y claros.
-- PR con explicación/capturas.
-- Mantener PEP8 y evitar dependencias nuevas (sin NumPy).
-
----
-
-## 📄 Licencia
-
-MIT (o la que definas).
+En `ejemplos/funciones.txt` se incluyen más funciones de prueba.  
